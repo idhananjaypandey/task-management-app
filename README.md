@@ -16,25 +16,87 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Task Manager Application
+This is a simple Task Manager application built using React. It allows users to create, edit, delete, and mark tasks as complete or incomplete. Tasks can be prioritized as Low, Medium, or High, and the task list is automatically sorted based on both the task priority and completion status.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Features
+Add New Tasks: Add a task with a title, description, and priority (Low, Medium, High).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Edit Tasks: Update any existing task's details.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Delete Tasks: Remove tasks from the list.
 
-## Learn More
+Toggle Task Completion: Mark tasks as complete or incomplete.
 
-To learn more about Next.js, take a look at the following resources:
+Task Sorting: Tasks are sorted by completion status (pending tasks appear first), and within each status, tasks are sorted by priority (High > Medium > Low).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Success Alerts: Users are notified when actions are successfully performed (task added, task edited, task deleted, task marked as complete/incomplete).
+ 
+<!-- Prerequisites -->
+##Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Make sure you have the following installed on your machine:
 
-## Deploy on Vercel
+Node.js (v12.x or later)
+npm (comes with Node.js)
+Setup Instructions
+Clone the repository:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+bash
+Copy code
+git clone https://github.com/idhananjaypandey/task-management-app.git
+cd task-manager-app
+Install dependencies:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+bash
+Copy code
+npm install
+Start the development server:
+
+bash
+Copy code
+npm start
+The server will run on http://localhost:3000.
+
+Open the app in your browser: Go to http://localhost:3000 to view the task manager application.
+
+Folder Structure
+java
+Copy code
+task-manager-app/
+  ├── public/
+  ├── src/
+  │   ├── components/
+  │   │   ├── TaskForm.js
+  │   │   ├── TaskList.js
+  │   └── App.js
+  ├── .gitignore
+  ├── README.md
+  ├── package.json
+  └── package-lock.json
+Approach: Sorting Tasks by Priority
+The tasks are sorted based on two main factors:
+
+Completion Status:
+
+Incomplete tasks are always displayed first, followed by completed tasks.
+Priority Sorting:
+
+Within each completion status (completed or incomplete), tasks are sorted by their priority level. The order of priorities is:
+High: Tasks with high priority appear at the top of the list.
+Medium: Tasks with medium priority appear after the high-priority tasks.
+Low: Tasks with low priority appear at the bottom of the list.
+Sorting Logic:
+The sorting logic is implemented using JavaScript’s sort() function. The tasks are sorted in two steps:
+
+Completed tasks are moved to the bottom: This is done by checking the completed status of each task. Incomplete tasks are displayed first, and completed tasks are displayed later.
+
+Sorting by priority within each group: After sorting by completion status, tasks are further sorted by priority, where the order is High > Medium > Low.
+
+
+By combining both completion status and priority, the task list is always organized in a way that prioritizes pending tasks and, within those, the tasks that need the most attention.
+
+Future Improvements
+Implement task due dates and sort by the nearest due date.
+Add user authentication to manage individual task lists.
+Implement a drag-and-drop feature for manual task rearrangement.
